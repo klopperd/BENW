@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="/css/myStyle.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/bootstrap-grid.min.css" type="text/css" rel="stylesheet"/>
+    
+    <script src="/css//bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+    <title>Home</title>
+</head>
+{{template "headernav"}}
+<body>
+    {{if .Authenticated }}
+    <a href="/region">Welcome back! {{.Username}}</a>
+    {{end}}
+    {{ if not .Authenticated }}
+    <p>Please enter the code to access the information.</p>
+    <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="code" placeholder="secret code" required>
+        <input type="submit" value="Submit">
+    </form>
+    {{ end }}
+</body>
+</html>

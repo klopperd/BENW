@@ -159,6 +159,18 @@ nav {
           transform: translateX(0%);
 }
 
+.container-fluid .mystyle{
+  padding:0px;
+}
+
+.mybutton{
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  border: 2px solid #4CAF50; /* Green */
+  width: 100px;
+}
+
 @-webkit-keyframes navLinkFade {
   from {
     opacity: 0;
@@ -185,3 +197,4 @@ nav {
   }
 }
 /*# sourceMappingURL=nav.css.map */
+

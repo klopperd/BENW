@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="/css/myStyle.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/bootstrap-grid.min.css" type="text/css" rel="stylesheet"/>
+<script src="/css//bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    
+    {{template "header"}}
+</head>
+{{template "headernav"}}
+<body>
+    <div class = "container-fluid" style="background:rgb(194, 191, 191);padding:0px">    
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="pagetitle">
+                <h1>{{.Name}} - {{.Desc}}</h1>
+                </div>
+            </div>
+            <div class="col-sm-4" >
+                <form method="POST" action="/region">
+                    
+                    <div class="col-sm-12" >
+                        <label>Places:</label>
+                        <select id="kz" name="sou" onchange='if(this.value != 0) { this.form.submit(); }'>
+                            <option value="" selected disabled hidden>{{.Name}}</option>
+                            <option value="tt">Test</option>
+                            <option value="ec">ECOU</option>
+                            <option value="gt">GOU</option>
+                            <option value="mp">MPOU</option>
+                            <option value="kz">KZOU</option>
+                            <option value="wc">WCOU</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12" ><br></div>
+                    <div class="row" >
+                        
+                            <div class = "col-sm-4">
+                                <label for="Mess"> 
+                                    <input type="checkbox" name="shOptions" value="SM" onchange='if(this.value != 0) { this.form.submit(); }'> Show Messages
+                                </label> 
+                            </div>
+                            <div class = "col-sm-4">
+                                <label for="Audit"> 
+                                    <input type="checkbox" name="shOptions" value="SA" {{.ChkAudit}}> Show audit  
+                                </label> 
+                            </div>
+                            <div class = "col-sm-4" style = "min-height:30px">
+                                <button type="submit" class = "mybutton">Refresh</button>
+                            </div>
+                        
+                    </div>
+                    
+                </form>    
+            </div>
+            
+        </div> 
+    </div>  
+    
+    
+    <div class = "bodydata">
+        <h2>{{.Mc}} messages received in last hour</h2>    
+    </div>
+    
+    
+    <div class = "messitem">
+        <table style="width:60%">
+            <tr style="text-align:left">
+                <th>Receive Time</th>
+                <th>Message</th>
+                <th>DT</th>
+            </tr>
+            {{range .Mess}}
+            <tr>
+                <td style = "font-size:12px">{{.Rt}}</td>
+                <td style = "font-size:12px">{{.Message}}</td>
+                <td style = "font-size:12px">{{.DT}}</td>
+            </tr>
+            {{end}}
+        </table>        
+    </div>
+    
+
+    
+    
+</body>
+</html>
